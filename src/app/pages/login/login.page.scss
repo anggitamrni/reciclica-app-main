@@ -1,11 +1,7 @@
-ion-button[color="medium"]{
-  text-transform: initial;
-}
-
-ion-button[color="success"]{
-  text-transform: uppercase;
+ion-button[color="primary"] {
+    text-transform: initial;
 }
 
 ion-content {
-  --background: var(--ion-color-success);
+    --background: var(--ion-color-success);
 }

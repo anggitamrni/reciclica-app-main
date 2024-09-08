@@ -7,19 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { SharedModule } from 'src/app/shared/shared.module';
-
+import { PickupCallCardComponent } from 'src/app/components/pickup-call-card/pickup-call-card.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    SharedModule
+    HomePageRoutingModule
   ],
   declarations: [
-    HomePage
-  ]
+    HomePage,
+    PickupCallCardComponent
+  ],
+  exports: [PickupCallCardComponent]  // Export the component
 })
+
 export class HomePageModule {}

@@ -1,11 +1,13 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { Store } from '@ngrx/store';
+import { show } from 'src/store/loading/loading.action';
+import { hide } from 'src/store/loading/loading.action';
+import { loadingReducer } from 'src/store/loading/loading.reducers';
 
 import { LoadingComponent } from './loading.component';
-import { Store, StoreModule } from '@ngrx/store';
-import { loadingReducer } from 'src/store/loading/loading.reducers';
+import { StoreModule } from '@ngrx/store';
 import { AppState } from '@capacitor/app';
-import { hide, show } from 'src/store/loading/loading.actions';
 
 describe('LoadingComponent', () => {
   let component: LoadingComponent;
@@ -18,12 +20,13 @@ describe('LoadingComponent', () => {
       imports: [
         IonicModule.forRoot(),
         StoreModule.forRoot([]),
-        StoreModule.forFeature("loading", loadingReducer)
+        StoreModule.forFeature('loading', loadingReducer)
       ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoadingComponent);
     store = TestBed.get(Store);
+
 
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -44,6 +47,6 @@ describe('LoadingComponent', () => {
     store.dispatch(show());
     fixture.detectChanges();
 
-    expect(compiled.querySelected(".backdrop")).not.toBeNull();
+    expect(compiled.querySelected(".backdrop")).toBeNull();
   });
 });

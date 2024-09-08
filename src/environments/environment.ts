@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  firebaseConfig : {
+
+  firebaseConfig: {
     apiKey: "AIzaSyAzK9krVpdhcQk8_3BqaQFfdGkfGRR5wNA",
     authDomain: "reciclica-8aadd.firebaseapp.com",
     projectId: "reciclica-8aadd",
@@ -11,7 +12,7 @@ export const environment = {
     messagingSenderId: "826758017393",
     appId: "1:826758017393:web:d2aeaffd19c76c66af46d0"
   },
-  production: false
+  production: true
 };
 
 /*

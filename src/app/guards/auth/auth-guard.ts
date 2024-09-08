@@ -1,33 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { CanLoad, Router } from '@angular/router';
+import { CanLoad, GuardResult, MaybeAsync, Route, UrlSegment } from '@angular/router';
+import { Observable,of } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState as CapacitorAppState } from '@capacitor/app';
-import { switchMap, take } from 'rxjs/operators'; // Remove this line
-
-interface AppState {
-  login: any; // Add this line
-}
+import { AppState } from 'src/store/AppState';
+import { take, switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanLoad{
 
   constructor(private store: Store<AppState>, private router: Router) { }
 
-  canLoad(): Observable<boolean> {
-    // Define a selector function to access login state
-    const selectLoginState = (state: AppState) => state.login;
-    return this.store.select(selectLoginState).pipe(
+  canLoad() : Observable<boolean> {
+    return this.store.select('login').pipe(
       take(1),
-      switchMap((loginState: any) => {
-        if (loginState.isLoggedIn){
+      switchMap(loginState => {
+        if (loginState.isLoggedIn) {
           return of(true);
         }
         this.router.navigateByUrl('login');
         return of(false);
-      })
-    )
-  }
+      })
+    )
+  }
 }

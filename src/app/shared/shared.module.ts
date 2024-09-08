@@ -1,17 +1,12 @@
+// shared.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PickupCallCardComponent } from '../components/pickup-call-card/pickup-call-card.component';
+import { ErrorMessageComponent } from '../components/error-message/error-message.component';
 import { IonicModule } from '@ionic/angular';
 
 @NgModule({
-  declarations: [PickupCallCardComponent],
-  imports: [
-    CommonModule,
-    IonicModule
-  ],
-  exports: [
-    PickupCallCardComponent,
-    IonicModule
-  ]
+  declarations: [ErrorMessageComponent],
+  imports: [CommonModule, IonicModule],
+  exports: [ErrorMessageComponent],  // Export the component
 })
 export class SharedModule { }

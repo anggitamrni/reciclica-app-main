@@ -1,19 +1,15 @@
 import { FormBuilder, FormGroup, ValidatorFn, Validators } from "@angular/forms";
 
 export class RegisterPageForm {
-    static getForm(): FormGroup<any> {
-        throw new Error("Method not implemented.");
-    }
-    
-    private formBuilder!: FormBuilder;
-    private form!: FormGroup;
+    private formBuilder: FormBuilder;
+    private form: FormGroup;
 
-    constructor(formBuilder: FormBuilder){
+    constructor(formBuilder: FormBuilder) {
         this.formBuilder = formBuilder;
         this.form = this.createForm();
     }
 
-    private createForm() : FormGroup {
+    private createForm(): FormGroup {
         let form = this.formBuilder.group({
             name: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.email]],
@@ -25,7 +21,7 @@ export class RegisterPageForm {
                 number: ['', [Validators.required]],
                 neighborhood: ['', [Validators.required]],
                 complement: ['', [Validators.required]],
-                zipcode: ['', [Validators.required]],
+                zipCode: ['', [Validators.required]],
                 state: ['', [Validators.required]],
                 city: ['', [Validators.required]]
             })
@@ -33,10 +29,10 @@ export class RegisterPageForm {
 
         form.get('repeatPassword')?.setValidators(matchPasswordAndRepeatPassword(form));
 
-        return this.form;
+        return form
     }
 
-    getForm() : FormGroup {
+    getForm() : FormGroup{
         return this.form;
     }
 }
@@ -46,8 +42,8 @@ function matchPasswordAndRepeatPassword(form: FormGroup) : ValidatorFn {
     const repeatPassword = form.get('repeatPassword');
 
     const validator = () => {
-        return password?.value == repeatPassword?.value ? null : {isntMaatching: true}
-    };
+        return password?.value == repeatPassword?.value ? null : { 'isntMatching': true };
+    }
 
-    return validator;
+    return validator
 }

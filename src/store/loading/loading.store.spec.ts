@@ -1,29 +1,36 @@
-import { createAction } from "@ngrx/store";
-import { hide, show } from "./loading.actions";
-import { loadingReducer } from "./loading.reducers"
+import { loadingReducer } from "./loading.reducers";
 import { LoadingState } from "./LoadingState";
+import { hide, show } from "./loading.action";
+import { createAction } from "@ngrx/store";
 
 describe('Loading store', () => {
 
-  it('show', () => {
-    const initialState: LoadingState = {show: false};
-    const newState = loadingReducer(initialState, show());
+    it('show', () => {
+        const initialStates: LoadingState = {
+            show: false};
 
-    expect(newState).toEqual({show: true});
-  })
+        const newState = loadingReducer(initialStates, show());
 
-  it('hide', () => {
-    const initialState: LoadingState = {show: true};
-    const newState = loadingReducer(initialState, hide());
+        expect(newState).toEqual({show: true});
+    })
 
-    expect(newState).toEqual({show: false});
-  })
+    it('hide', () => {
+        const initialStates: LoadingState = {
+            show: true};
 
-  it('should keep state if action is unknown', () => {
-    const initialState: LoadingState = {show: true};
-    const action = createAction("UNKNOWN")
-    const newState = loadingReducer(initialState, action());
+        const newState = loadingReducer(initialStates, hide());
 
-    expect(newState).toEqual({show: true});
-  })
+        expect(newState).toEqual({show: false});
+    })
+
+    it('should keep state if action is unknown', () => {
+        const initialStates: LoadingState = {
+            show: true};
+
+        const action = createAction("UNKNOWN");
+        const newState = loadingReducer(initialStates, action);
+
+        expect(newState).toEqual({show: true});
+    })
+
 })
