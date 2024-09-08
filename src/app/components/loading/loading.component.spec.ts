@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { LoadingComponent } from './LoadingComponent';
+
+import { LoadingComponent } from './loading.component';
 import { Store, StoreModule } from '@ngrx/store';
 import { loadingReducer } from 'src/store/loading/loading.reducers';
 import { AppState } from '@capacitor/app';
@@ -13,7 +14,7 @@ describe('LoadingComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [LoadingComponent],
+      declarations: [ LoadingComponent ],
       imports: [
         IonicModule.forRoot(),
         StoreModule.forRoot([]),
@@ -29,19 +30,20 @@ describe('LoadingComponent', () => {
   }));
 
   it('should hide loading component when it is not loading', () => {
-    const compiler = fixture.nativeElement;
+    const compiled = fixture.nativeElement;
 
     store.dispatch(hide());
     fixture.detectChanges();
 
-    expect(compiler.querySelected(".backdrop")).toBeNull();
+    expect(compiled.querySelected(".backdrop")).toBeNull();
   });
+
   it('should show loading component when it is loading', () => {
-    const compiler = fixture.nativeElement;
+    const compiled = fixture.nativeElement;
 
     store.dispatch(show());
     fixture.detectChanges();
 
-    expect(compiler.querySelected(".backdrop")).not.toBeNull();
+    expect(compiled.querySelected(".backdrop")).not.toBeNull();
   });
 });

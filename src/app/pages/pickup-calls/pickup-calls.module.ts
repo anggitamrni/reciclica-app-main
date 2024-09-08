@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
 import { PickupCallsPageRoutingModule } from './pickup-calls-routing.module';
+
 import { PickupCallsPage } from './pickup-calls.page';
-import { HomePageModule } from '../home/home.module';  // Import HomePageModule
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -13,7 +15,7 @@ import { HomePageModule } from '../home/home.module';  // Import HomePageModule
     FormsModule,
     IonicModule,
     PickupCallsPageRoutingModule,
-    HomePageModule  // Include HomePageModule here
+    SharedModule
   ],
   declarations: [
     PickupCallsPage

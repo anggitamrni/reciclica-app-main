@@ -13,7 +13,8 @@ export class PickupCallPage implements OnInit {
   ngOnInit() {
   }
 
-  newToPickupCall() {
+  newPickupCall() {
     this.router.navigate(['home']);
   }
+
 }

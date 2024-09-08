@@ -1,94 +1,80 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="success">
+<ion-header>
+  <ion-toolbar color="success" style="color: white;">
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button title=""></ion-back-button>
     </ion-buttons>
     <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>What do you want to do with the recyclable waste?</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-radio-group>
-
+<ion-content>
+  <form [formGroup]="registerForm.getForm()">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Contact</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
         <ion-item>
-          <ion-label>I want to BUY it</ion-label>
-          <ion-radio slot="start" value="CLIENT"></ion-radio>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <app-error-message [field]="registerForm.getForm().get('name')" error="required" message="Name is mandatory"></app-error-message>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input type="password" formControlName="repeatPassword"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input type="tel" formControlName="phone"></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label>I want to SELL it</ion-label>
-          <ion-radio slot="start" value="PARTNER"></ion-radio>
+      </ion-card-content>
+    </ion-card>
 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Address Information</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content formGroupName="address">
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input type="text" formControlName="street"></ion-input>
         </ion-item>
-      </ion-radio-group>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Contact</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Confirm Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Phone Number</ion-label>
-        <ion-input type="tel"></ion-input>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Address Information</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Address</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Number</ion-label>
-        <ion-input type="tel"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Neighborhood</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Complement</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Zip Code</ion-label>
-        <ion-input type="tel"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">State</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">City</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-  <ion-button color="light" size="full" (click)="register()">Register</ion-button>
+        <ion-item>
+          <ion-label position="floating">Number</ion-label>
+          <ion-input type="tel" formControlName="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Neighborhood</ion-label>
+          <ion-input type="text" formControlName="neighborhood"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Complement</ion-label>
+          <ion-input type="text" formControlName="complement"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Zip Code</ion-label>
+          <ion-input type="tel"formControlName="zipCode"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">State</ion-label>
+          <ion-input type="text" formControlName="state"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input type="text" formControlName="city"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-button size="full" color="light" (click)="register()">Register</ion-button>
+  </form>
 </ion-content>
